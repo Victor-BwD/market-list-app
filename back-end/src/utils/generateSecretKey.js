@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 const crypto = require("crypto");
 
 // Gera uma chave aleatória de 256 bits (32 bytes)
