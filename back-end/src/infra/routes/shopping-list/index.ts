@@ -5,13 +5,14 @@ import { listShoppingListController } from "../../../controller/shopping-list/li
 import { deleteShoppingListController } from "../../../controller/shopping-list/delete";
 import { editShoppingListController } from "../../../controller/shopping-list/edit";
 import { editFavoriteShoppingListController } from "../../../controller/shopping-list/editFavorite";
+import { auth } from "../../../middlewares/authMiddleware";
 
 const shoppingListRouter = Router();
 
-shoppingListRouter.post(shoppingListUrls.main, CreateShoppingListController);
-shoppingListRouter.get(shoppingListUrls.main, listShoppingListController);
-shoppingListRouter.delete(shoppingListUrls.main + "/:id", deleteShoppingListController);
-shoppingListRouter.put(shoppingListUrls.main + "/:id", editShoppingListController);
-shoppingListRouter.put(shoppingListUrls.main + "/:id/favorite", editFavoriteShoppingListController);
+shoppingListRouter.post(shoppingListUrls.main, auth, CreateShoppingListController);
+shoppingListRouter.get(shoppingListUrls.main, auth, listShoppingListController);
+shoppingListRouter.delete(shoppingListUrls.main + "/:id", auth, deleteShoppingListController);
+shoppingListRouter.put(shoppingListUrls.main + "/:id", auth, editShoppingListController);
+shoppingListRouter.put(shoppingListUrls.main + "/:id/favorite", auth, editFavoriteShoppingListController);
 
 export { shoppingListRouter };
